@@ -20,7 +20,9 @@ export const init = async (threshold = 0.9, labels) => {
 
   if (model) { return; }
 
-  if (process.env.NODE_ENV === 'development') {
+  const isDev = process.env.NODE_ENV === 'development';
+
+  if (isDev) {
     console.log('Loading model...');
   }
 
@@ -28,7 +30,7 @@ export const init = async (threshold = 0.9, labels) => {
   // labels to include.
   model = await toxicity.load(threshold, labels);
 
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     console.log('Model loaded!');
   }
 };
