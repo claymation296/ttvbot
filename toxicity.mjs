@@ -2,6 +2,9 @@
 
 import {init, classify} from './tf-toxicity.mjs';
 
+
+export {init};
+
 /*
 
   This function uses a regex that replaces common 
@@ -25,16 +28,6 @@ const strToSentences = str =>
 
 // Returns the full raw output of the tf toxicity model.
 export const predict = async message => {
-
-  // await init();
-
-
-
-  await init(0.5);
-
-
-
-
 
   const sentences = strToSentences(message);
 
