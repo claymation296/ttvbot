@@ -1,6 +1,5 @@
 
 
-import dotenv           from 'dotenv';
 import tmi              from 'tmi.js';
 import {setRandomColor} from './color.mjs';
 
@@ -8,8 +7,6 @@ import {
   hits, 
   init as initToxicity
 } from './toxicity.mjs';
-
-dotenv.config();
 
 
 const channel = process.env.TWITCH_CHANNEL_NAME;
@@ -85,12 +82,18 @@ client.on('message', async (channel, tags, message, self) => {
 
     // const threshold = process.env.TOXICITY_SENSITIVITY;
 
-    const threshold = 0.5;
+    // const threshold = 0.7;
+    const threshold = 0.97;
 
 
-    const labels    = ['identity_attack', 'severe_toxicity', 'sexual_explicit'];
+    // const labels    = ['identity_attack', 'severe_toxicity', 'sexual_explicit'];
 
-    await initToxicity(threshold, labels);
+    // await initToxicity(threshold, labels);
+
+
+    await initToxicity(threshold);
+    
+
 
     console.log('Connecting...');
 
